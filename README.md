@@ -2,8 +2,8 @@
 
 Grupo:
 
-- RA - Nome
-- RA - Nome
+- 260514 - Isac Lucas Soares Braga
+- 260711 - Victor Hoshikawa Satoh
 - RA - Nome
 
 ## Descrição

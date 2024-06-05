@@ -1,0 +1,726 @@
+Analysis & Synthesis report for projetofinal
+Wed Jun  5 16:50:12 2024
+Quartus Prime Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |projetofinal|estadoPorradao
+  9. State Machine - |projetofinal|estadoBarraV
+ 10. State Machine - |projetofinal|running_state
+ 11. State Machine - |projetofinal|vga:vga_instance|estadoV
+ 12. State Machine - |projetofinal|vga:vga_instance|estadoH
+ 13. User-Specified and Inferred Latches
+ 14. Registers Removed During Synthesis
+ 15. Removed Registers Triggering Further Register Optimizations
+ 16. General Register Statistics
+ 17. Inverted Register Statistics
+ 18. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 19. Parameter Settings for User Entity Instance: Top-level Entity: |projetofinal
+ 20. Post-Synthesis Netlist Statistics for Top Partition
+ 21. Elapsed Time Per Partition
+ 22. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Wed Jun  5 16:50:12 2024       ;
+; Quartus Prime Version           ; 17.1.0 Build 590 10/25/2017 SJ Lite Edition ;
+; Revision Name                   ; projetofinal                                ;
+; Top-level Entity Name           ; projetofinal                                ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 387                                         ;
+; Total pins                      ; 86                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; projetofinal       ; projetofinal       ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 20          ;
+; Maximum allowed            ; 12          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 12          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processor 7            ;   0.0%      ;
+;     Processor 8            ;   0.0%      ;
+;     Processors 9-12        ;   0.0%      ;
++----------------------------+-------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                           ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                             ; Library ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------+---------+
+; vga.v                            ; yes             ; User Verilog HDL File  ; /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/vga.v          ;         ;
+; projetofinal.v                   ; yes             ; User Verilog HDL File  ; /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v ;         ;
++----------------------------------+-----------------+------------------------+------------------------------------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                            ;
++---------------------------------------------+--------------------------+
+; Resource                                    ; Usage                    ;
++---------------------------------------------+--------------------------+
+; Estimate of Logic utilization (ALMs needed) ; 448                      ;
+;                                             ;                          ;
+; Combinational ALUT usage for logic          ; 773                      ;
+;     -- 7 input functions                    ; 0                        ;
+;     -- 6 input functions                    ; 120                      ;
+;     -- 5 input functions                    ; 58                       ;
+;     -- 4 input functions                    ; 82                       ;
+;     -- <=3 input functions                  ; 513                      ;
+;                                             ;                          ;
+; Dedicated logic registers                   ; 387                      ;
+;                                             ;                          ;
+; I/O pins                                    ; 86                       ;
+;                                             ;                          ;
+; Total DSP Blocks                            ; 0                        ;
+;                                             ;                          ;
+; Maximum fan-out node                        ; vga:vga_instance|VGA_CLK ;
+; Maximum fan-out                             ; 388                      ;
+; Total fan-out                               ; 4131                     ;
+; Average fan-out                             ; 3.10                     ;
++---------------------------------------------+--------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------+--------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name            ; Entity Name  ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------+--------------+--------------+
+; |projetofinal              ; 773 (651)           ; 387 (288)                 ; 0                 ; 0          ; 86   ; 0            ; |projetofinal                  ; projetofinal ; work         ;
+;    |vga:vga_instance|      ; 122 (122)           ; 99 (99)                   ; 0                 ; 0          ; 0    ; 0            ; |projetofinal|vga:vga_instance ; vga          ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+--------------------------------+--------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-----------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |projetofinal|estadoPorradao                                                                                      ;
++----------------------------------+------------------------------+----------------------------------+------------------------------+
+; Name                             ; estadoPorradao.PORRADAO_NULL ; estadoPorradao.PORRADAO_VOLTANDO ; estadoPorradao.PORRADAO_INDO ;
++----------------------------------+------------------------------+----------------------------------+------------------------------+
+; estadoPorradao.PORRADAO_NULL     ; 0                            ; 0                                ; 0                            ;
+; estadoPorradao.PORRADAO_INDO     ; 1                            ; 0                                ; 1                            ;
+; estadoPorradao.PORRADAO_VOLTANDO ; 1                            ; 1                                ; 0                            ;
++----------------------------------+------------------------------+----------------------------------+------------------------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------+
+; State Machine - |projetofinal|estadoBarraV                                                                 ;
++---------------------------+---------------------------+--------------------------+-------------------------+
+; Name                      ; estadoBarraV.BARRA_PARADA ; estadoBarraV.BARRA_BAIXO ; estadoBarraV.BARRA_CIMA ;
++---------------------------+---------------------------+--------------------------+-------------------------+
+; estadoBarraV.BARRA_PARADA ; 0                         ; 0                        ; 0                       ;
+; estadoBarraV.BARRA_CIMA   ; 1                         ; 0                        ; 1                       ;
+; estadoBarraV.BARRA_BAIXO  ; 1                         ; 1                        ; 0                       ;
++---------------------------+---------------------------+--------------------------+-------------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------+
+; State Machine - |projetofinal|running_state ;
++------------------+--------------------------+
+; Name             ; running_state.01         ;
++------------------+--------------------------+
+; running_state.00 ; 0                        ;
+; running_state.01 ; 1                        ;
++------------------+--------------------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------+
+; State Machine - |projetofinal|vga:vga_instance|estadoV         ;
++------------+------------+------------+------------+------------+
+; Name       ; estadoV.11 ; estadoV.10 ; estadoV.01 ; estadoV.00 ;
++------------+------------+------------+------------+------------+
+; estadoV.00 ; 0          ; 0          ; 0          ; 0          ;
+; estadoV.01 ; 0          ; 0          ; 1          ; 1          ;
+; estadoV.10 ; 0          ; 1          ; 0          ; 1          ;
+; estadoV.11 ; 1          ; 0          ; 0          ; 1          ;
++------------+------------+------------+------------+------------+
+
+
+Encoding Type:  One-Hot
++----------------------------------------------------------------+
+; State Machine - |projetofinal|vga:vga_instance|estadoH         ;
++------------+------------+------------+------------+------------+
+; Name       ; estadoH.11 ; estadoH.10 ; estadoH.01 ; estadoH.00 ;
++------------+------------+------------+------------+------------+
+; estadoH.00 ; 0          ; 0          ; 0          ; 0          ;
+; estadoH.01 ; 0          ; 0          ; 1          ; 1          ;
+; estadoH.10 ; 0          ; 1          ; 0          ; 1          ;
+; estadoH.11 ; 1          ; 0          ; 0          ; 1          ;
++------------+------------+------------+------------+------------+
+
+
++----------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                ;
++-----------------------------------------------------+---------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal ; Free of Timing Hazards ;
++-----------------------------------------------------+---------------------+------------------------+
+; HEX0[0]$latch                                       ; Mux0                ; yes                    ;
+; HEX0[1]$latch                                       ; Mux0                ; yes                    ;
+; HEX0[2]$latch                                       ; Mux0                ; yes                    ;
+; HEX0[3]$latch                                       ; Mux0                ; yes                    ;
+; HEX0[4]$latch                                       ; Mux0                ; yes                    ;
+; HEX0[5]$latch                                       ; Mux0                ; yes                    ;
+; HEX0[6]$latch                                       ; Mux0                ; yes                    ;
+; HEX1[0]$latch                                       ; Mux8                ; yes                    ;
+; HEX1[1]$latch                                       ; Mux8                ; yes                    ;
+; HEX1[2]$latch                                       ; Mux8                ; yes                    ;
+; HEX1[3]$latch                                       ; Mux8                ; yes                    ;
+; HEX1[4]$latch                                       ; Mux8                ; yes                    ;
+; HEX1[5]$latch                                       ; Mux8                ; yes                    ;
+; HEX1[6]$latch                                       ; Mux8                ; yes                    ;
+; HEX3[0]$latch                                       ; Mux43               ; yes                    ;
+; HEX3[1]$latch                                       ; Mux43               ; yes                    ;
+; HEX3[2]$latch                                       ; Mux43               ; yes                    ;
+; HEX3[3]$latch                                       ; Mux43               ; yes                    ;
+; HEX3[4]$latch                                       ; Mux43               ; yes                    ;
+; HEX3[5]$latch                                       ; Mux43               ; yes                    ;
+; HEX3[6]$latch                                       ; Mux43               ; yes                    ;
+; HEX4[0]$latch                                       ; Mux24               ; yes                    ;
+; HEX4[1]$latch                                       ; Mux24               ; yes                    ;
+; HEX4[2]$latch                                       ; Mux24               ; yes                    ;
+; HEX4[3]$latch                                       ; Mux24               ; yes                    ;
+; HEX4[4]$latch                                       ; Mux24               ; yes                    ;
+; HEX4[5]$latch                                       ; Mux24               ; yes                    ;
+; HEX4[6]$latch                                       ; Mux24               ; yes                    ;
+; Number of user-specified and inferred latches = 28  ;                     ;                        ;
++-----------------------------------------------------+---------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++---------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                              ;
++----------------------------------------+----------------------------------------+
+; Register name                          ; Reason for Removal                     ;
++----------------------------------------+----------------------------------------+
+; periodo[0]                             ; Stuck at GND due to stuck port data_in ;
+; veloHBola[0,1]                         ; Stuck at GND due to stuck port data_in ;
+; fimDeJogoAux                           ; Stuck at GND due to stuck port data_in ;
+; periodo[22..32]                        ; Stuck at GND due to stuck port data_in ;
+; periodo[21]                            ; Stuck at VCC due to stuck port data_in ;
+; periodo[19,20]                         ; Stuck at GND due to stuck port data_in ;
+; periodo[17,18]                         ; Stuck at VCC due to stuck port data_in ;
+; periodo[14..16]                        ; Stuck at GND due to stuck port data_in ;
+; periodo[13]                            ; Stuck at VCC due to stuck port data_in ;
+; periodo[11,12]                         ; Stuck at GND due to stuck port data_in ;
+; periodo[10]                            ; Stuck at VCC due to stuck port data_in ;
+; periodo[9]                             ; Stuck at GND due to stuck port data_in ;
+; periodo[7,8]                           ; Stuck at VCC due to stuck port data_in ;
+; periodo[6]                             ; Stuck at GND due to stuck port data_in ;
+; periodo[5]                             ; Stuck at VCC due to stuck port data_in ;
+; periodo[1..4]                          ; Stuck at GND due to stuck port data_in ;
+; fimDeJogo                              ; Stuck at GND due to stuck port data_in ;
+; VGA_R_aux[0..6]                        ; Merged with VGA_R_aux[7]               ;
+; VGA_G_aux[0..6]                        ; Merged with VGA_G_aux[7]               ;
+; VGA_B_aux[0..7]                        ; Merged with VGA_G_aux[7]               ;
+; contadorHBola[0]                       ; Merged with contadorHBola[1]           ;
+; contadorBarraH[1]                      ; Merged with contadorBarraH[0]          ;
+; contadorBarraV[1]                      ; Merged with contadorBarraV[0]          ;
+; contadorBarraV[0]                      ; Stuck at GND due to stuck port data_in ;
+; contadorHBola[1]                       ; Stuck at GND due to stuck port data_in ;
+; contadorBarraH[0]                      ; Stuck at GND due to stuck port data_in ;
+; running_state~7                        ; Lost fanout                            ;
+; vga:vga_instance|estadoV~5             ; Lost fanout                            ;
+; vga:vga_instance|estadoV~6             ; Lost fanout                            ;
+; vga:vga_instance|estadoH~6             ; Lost fanout                            ;
+; vga:vga_instance|estadoH~7             ; Lost fanout                            ;
+; Total Number of Removed Registers = 70 ;                                        ;
++----------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                        ;
++---------------+---------------------------+----------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register ;
++---------------+---------------------------+----------------------------------------+
+; fimDeJogo     ; Stuck at GND              ; contadorBarraV[0], contadorBarraH[0]   ;
+;               ; due to stuck port data_in ;                                        ;
+; periodo[0]    ; Stuck at GND              ; contadorHBola[1]                       ;
+;               ; due to stuck port data_in ;                                        ;
++---------------+---------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 387   ;
+; Number of registers using Synchronous Clear  ; 220   ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 286   ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 212   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++---------------------------------------------------+
+; Inverted Register Statistics                      ;
++-----------------------------------------+---------+
+; Inverted Register                       ; Fan out ;
++-----------------------------------------+---------+
+; sentidoHBola                            ; 15      ;
+; x_bola[5]                               ; 5       ;
+; x_bola[4]                               ; 4       ;
+; x_bola[1]                               ; 6       ;
+; x_barra[9]                              ; 7       ;
+; x_barra[4]                              ; 6       ;
+; x_barra[3]                              ; 6       ;
+; x_barra[6]                              ; 7       ;
+; y_barra[7]                              ; 6       ;
+; y_barra[4]                              ; 5       ;
+; y_barra[6]                              ; 6       ;
+; y_barra[5]                              ; 6       ;
+; y_bola[7]                               ; 5       ;
+; y_bola[4]                               ; 5       ;
+; y_bola[6]                               ; 6       ;
+; y_bola[5]                               ; 6       ;
+; sentidoVBola                            ; 11      ;
+; veloHBola[3]                            ; 2       ;
+; veloVBola[4]                            ; 2       ;
+; veloHBola[2]                            ; 2       ;
+; Total number of inverted registers = 20 ;         ;
++-----------------------------------------+---------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |projetofinal|vga:vga_instance|contadorH[14] ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |projetofinal|placar[9]                      ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 0 LEs                ; 12 LEs                 ; Yes        ; |projetofinal|y_barra[0]                     ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |projetofinal|y_bola[0]                      ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 0 LEs                ; 12 LEs                 ; Yes        ; |projetofinal|x_barra[5]                     ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |projetofinal|contadorPorradao[8]            ;
+; 4:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |projetofinal|vga:vga_instance|contadorV[20] ;
+; 4:1                ; 7 bits    ; 14 LEs        ; 7 LEs                ; 7 LEs                  ; Yes        ; |projetofinal|x_bola[9]                      ;
+; 5:1                ; 30 bits   ; 90 LEs        ; 0 LEs                ; 90 LEs                 ; Yes        ; |projetofinal|contadorBarraV[31]             ;
+; 6:1                ; 30 bits   ; 120 LEs       ; 0 LEs                ; 120 LEs                ; Yes        ; |projetofinal|contadorBarraH[27]             ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 0 LEs                ; 8 LEs                  ; Yes        ; |projetofinal|y_barra[7]                     ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |projetofinal|y_bola[4]                      ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 0 LEs                ; 8 LEs                  ; Yes        ; |projetofinal|x_barra[9]                     ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |projetofinal|x_bola[1]                      ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |projetofinal|vga:vga_instance|VGA_R         ;
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |projetofinal|Selector69                     ;
+; 7:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |projetofinal|Selector2                      ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |projetofinal|vga:vga_instance|estadoV       ;
+; 9:1                ; 4 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |projetofinal|vga:vga_instance|estadoH       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |projetofinal ;
++------------------------+-------+---------------------------------------------+
+; Parameter Name         ; Value ; Type                                        ;
++------------------------+-------+---------------------------------------------+
+; LIMITE_TELA_DIR        ; 640   ; Signed Integer                              ;
+; LIMITE_TELA_ESQ        ; 0     ; Signed Integer                              ;
+; LIMITE_TELA_CIMA       ; 0     ; Signed Integer                              ;
+; LIMITE_TELA_BAIXO      ; 480   ; Signed Integer                              ;
+; BARRA_PARADA           ; 00    ; Unsigned Binary                             ;
+; BARRA_CIMA             ; 01    ; Unsigned Binary                             ;
+; PORRADAO_NULL          ; 00    ; Unsigned Binary                             ;
+; PORRADAO_INDO          ; 01    ; Unsigned Binary                             ;
+; PORRADAO_VOLTANDO      ; 10    ; Unsigned Binary                             ;
+; BARRA_BAIXO            ; 10    ; Unsigned Binary                             ;
+; VELOCIDADE_BARRA_V     ; 20    ; Signed Integer                              ;
+; VELOCIDADE_PORRADAO    ; 20    ; Signed Integer                              ;
+; LARGURA_BARRA          ; 15    ; Signed Integer                              ;
+; ALTURA_BARRA           ; 180   ; Signed Integer                              ;
+; TAMANHO_BOLA           ; 20    ; Signed Integer                              ;
+; DIREITA_BOLA           ; 1     ; Signed Integer                              ;
+; ESQUERDA_BOLA          ; 0     ; Signed Integer                              ;
+; CIMA_BOLA              ; 1     ; Signed Integer                              ;
+; BAIXO_BOLA             ; 0     ; Signed Integer                              ;
+; ESTADO_VERTICAL_BOLA   ; 0     ; Signed Integer                              ;
+; ESTADO_INCLINADO1_BOLA ; 1     ; Signed Integer                              ;
+; ESTADO_INCLINADO2_BOLA ; 2     ; Signed Integer                              ;
+; COL_BB_NULL            ; 0     ; Signed Integer                              ;
+; COL_BB_ESQ             ; 1     ; Signed Integer                              ;
+; COL_BB_MEIO            ; 2     ; Signed Integer                              ;
+; COL_BB_DIR             ; 3     ; Signed Integer                              ;
+; W                      ; 10    ; Signed Integer                              ;
++------------------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 387                         ;
+;     CLR               ; 8                           ;
+;     CLR SCLR          ; 124                         ;
+;     ENA               ; 26                          ;
+;     ENA CLR           ; 124                         ;
+;     ENA CLR SCLR      ; 30                          ;
+;     ENA SCLR          ; 32                          ;
+;     SCLR              ; 34                          ;
+;     plain             ; 9                           ;
+; arriav_lcell_comb     ; 777                         ;
+;     arith             ; 406                         ;
+;         0 data inputs ; 6                           ;
+;         1 data inputs ; 300                         ;
+;         2 data inputs ; 91                          ;
+;         4 data inputs ; 2                           ;
+;         5 data inputs ; 7                           ;
+;     normal            ; 371                         ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 22                          ;
+;         2 data inputs ; 28                          ;
+;         3 data inputs ; 68                          ;
+;         4 data inputs ; 80                          ;
+;         5 data inputs ; 51                          ;
+;         6 data inputs ; 120                         ;
+; boundary_port         ; 86                          ;
+;                       ;                             ;
+; Max LUT depth         ; 7.00                        ;
+; Average LUT depth     ; 3.67                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.1.0 Build 590 10/25/2017 SJ Lite Edition
+    Info: Processing started: Wed Jun  5 16:50:05 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off projetofinal -c projetofinal
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 12 of the 12 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file vga.v
+    Info (12023): Found entity 1: vga File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/vga.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file projetofinal.v
+    Info (12023): Found entity 1: projetofinal File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at projetofinal.v(31): created implicit net for "reset" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 31
+Info (12127): Elaborating entity "projetofinal" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at projetofinal.v(224): object "estadoAnguloBola" assigned a value but never read File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 224
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(193): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 193
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(194): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 194
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(200): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 200
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(201): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 201
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(256): truncated value with size 32 to match size of target (2) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 256
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(270): truncated value with size 32 to match size of target (2) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 270
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(279): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 279
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(280): truncated value with size 32 to match size of target (1) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 280
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(283): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 283
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(284): truncated value with size 32 to match size of target (1) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 284
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(293): truncated value with size 32 to match size of target (1) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 293
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(302): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 302
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(305): truncated value with size 32 to match size of target (1) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 305
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(306): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 306
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(310): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 310
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(312): truncated value with size 32 to match size of target (1) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 312
+Warning (10230): Verilog HDL assignment warning at projetofinal.v(313): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 313
+Warning (10270): Verilog HDL Case Statement warning at projetofinal.v(330): incomplete case statement has no default case item File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 330
+Warning (10270): Verilog HDL Case Statement warning at projetofinal.v(342): incomplete case statement has no default case item File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 342
+Warning (10270): Verilog HDL Case Statement warning at projetofinal.v(354): incomplete case statement has no default case item File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 354
+Warning (10240): Verilog HDL Always Construct warning at projetofinal.v(329): inferring latch(es) for variable "HEX0", which holds its previous value in one or more paths through the always construct File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (10240): Verilog HDL Always Construct warning at projetofinal.v(329): inferring latch(es) for variable "HEX1", which holds its previous value in one or more paths through the always construct File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (10240): Verilog HDL Always Construct warning at projetofinal.v(329): inferring latch(es) for variable "HEX2", which holds its previous value in one or more paths through the always construct File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (10270): Verilog HDL Case Statement warning at projetofinal.v(369): incomplete case statement has no default case item File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 369
+Warning (10270): Verilog HDL Case Statement warning at projetofinal.v(381): incomplete case statement has no default case item File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 381
+Warning (10270): Verilog HDL Case Statement warning at projetofinal.v(393): incomplete case statement has no default case item File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 393
+Warning (10240): Verilog HDL Always Construct warning at projetofinal.v(368): inferring latch(es) for variable "HEX3", which holds its previous value in one or more paths through the always construct File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (10240): Verilog HDL Always Construct warning at projetofinal.v(368): inferring latch(es) for variable "HEX4", which holds its previous value in one or more paths through the always construct File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (10240): Verilog HDL Always Construct warning at projetofinal.v(368): inferring latch(es) for variable "HEX5", which holds its previous value in one or more paths through the always construct File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX5[0]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX5[1]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX5[2]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX5[3]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX5[4]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX5[5]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX5[6]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX4[0]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX4[1]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX4[2]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX4[3]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX4[4]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX4[5]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX4[6]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX3[0]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX3[1]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX3[2]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX3[3]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX3[4]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX3[5]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX3[6]" at projetofinal.v(368) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Info (10041): Inferred latch for "HEX2[0]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX2[1]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX2[2]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX2[3]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX2[4]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX2[5]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX2[6]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX1[0]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX1[1]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX1[2]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX1[3]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX1[4]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX1[5]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX1[6]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX0[0]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX0[1]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX0[2]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX0[3]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX0[4]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX0[5]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (10041): Inferred latch for "HEX0[6]" at projetofinal.v(329) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Info (12128): Elaborating entity "vga" for hierarchy "vga:vga_instance" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 50
+Warning (10230): Verilog HDL assignment warning at vga.v(147): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/vga.v Line: 147
+Warning (10230): Verilog HDL assignment warning at vga.v(148): truncated value with size 32 to match size of target (10) File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/vga.v Line: 148
+Warning (14026): LATCH primitive "HEX2[0]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (14026): LATCH primitive "HEX2[1]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (14026): LATCH primitive "HEX2[2]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (14026): LATCH primitive "HEX2[3]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (14026): LATCH primitive "HEX2[4]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (14026): LATCH primitive "HEX2[5]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (14026): LATCH primitive "HEX2[6]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+Warning (14026): LATCH primitive "HEX5[0]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (14026): LATCH primitive "HEX5[1]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (14026): LATCH primitive "HEX5[2]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (14026): LATCH primitive "HEX5[3]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (14026): LATCH primitive "HEX5[4]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (14026): LATCH primitive "HEX5[5]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (14026): LATCH primitive "HEX5[6]$latch" is permanently enabled File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+Warning (13012): Latch HEX0[0]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placar[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX0[1]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placar[2] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX0[2]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placar[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX0[3]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placar[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX0[4]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placar[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX0[5]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placar[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX0[6]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placar[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX1[0]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd2[5]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 327
+Warning (13012): Latch HEX1[1]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd2[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 327
+Warning (13012): Latch HEX1[2]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd2[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 327
+Warning (13012): Latch HEX1[3]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd2[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 327
+Warning (13012): Latch HEX1[4]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd2[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 327
+Warning (13012): Latch HEX1[5]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd2[5]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 327
+Warning (13012): Latch HEX1[6]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 329
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd2[5]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 327
+Warning (13012): Latch HEX3[0]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placarOponente[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX3[1]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placarOponente[2] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX3[2]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placarOponente[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX3[3]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placarOponente[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX3[4]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placarOponente[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX3[5]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placarOponente[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX3[6]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal placarOponente[1] File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 261
+Warning (13012): Latch HEX4[0]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd1[5]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 326
+Warning (13012): Latch HEX4[1]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd1[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 326
+Warning (13012): Latch HEX4[2]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd1[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 326
+Warning (13012): Latch HEX4[3]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd1[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 326
+Warning (13012): Latch HEX4[4]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd1[6]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 326
+Warning (13012): Latch HEX4[5]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd1[5]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 326
+Warning (13012): Latch HEX4[6]$latch has unsafe behavior File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 368
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal bcd1[5]~synth File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 326
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "VGA_BLANK_N" is stuck at VCC File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 12
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 13
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 5 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 9 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[1]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[2]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[3]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[4]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[5]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[6]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[7]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[8]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[9]" File: /home/ec2022/ra260711/Desktop/Projeto Final/2024s1-mc613-projeto-rat_race/projetofinal.v Line: 2
+Info (21057): Implemented 885 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 71 output pins
+    Info (21061): Implemented 799 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 117 warnings
+    Info: Peak virtual memory: 1317 megabytes
+    Info: Processing ended: Wed Jun  5 16:50:12 2024
+    Info: Elapsed time: 00:00:07
+    Info: Total CPU time (on all processors): 00:00:15
+
+
