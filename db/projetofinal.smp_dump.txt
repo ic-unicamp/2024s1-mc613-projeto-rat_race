@@ -1,9 +1,4 @@
 
-State Machine - |projetofinal|running_state
-Name running_state.01 
-running_state.00 0 
-running_state.01 1 
-
 State Machine - |projetofinal|barra:barraEsq|estadoPorradao
 Name estadoPorradao.00 estadoPorradao.10 estadoPorradao.01 
 estadoPorradao.00 0 0 0 

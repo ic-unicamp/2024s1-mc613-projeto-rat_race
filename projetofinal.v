@@ -51,8 +51,9 @@ module projetofinal(
   .printing(printing)
   );
   
-    wire [9:0] x_barra_dir;
+   wire [9:0] x_barra_dir;
   wire [9:0] y_barra_dir;
+  wire [9:0] velo_barra_dir;
 
   
   placar placar_instance(
@@ -67,8 +68,8 @@ module projetofinal(
   );
   
   barra barraDir(
-    .indoCima(SW[0]),
-    .porradao(KEY[3]),
+    .indoCima(~SW[0]),
+    .porradao(KEY[2]),
     .clk(VGA_CLK),
     .reset(reset),
     .x_inicial(600),
@@ -76,17 +77,19 @@ module projetofinal(
     
     
     .x_barra(x_barra_dir),
-    .y_barra(y_barra_dir)
+    .y_barra(y_barra_dir),
+    .velocidadePorradao(velo_barra_dir)
   );
 
   
     wire [9:0] x_barra_esq;
   wire [9:0] y_barra_esq;
+  wire [9:0] velo_barra_esq;
 
   
   barra barraEsq(
     .indoCima(SW[9]),
-    .porradao(KEY[2]),
+    .porradao(KEY[3]),
     .clk(VGA_CLK),
     .reset(reset),
     .x_inicial(40),
@@ -94,7 +97,9 @@ module projetofinal(
     
     
     .x_barra(x_barra_esq),
-    .y_barra(y_barra_esq)
+    .y_barra(y_barra_esq),
+    .velocidadePorradao(velo_barra_esq)
+	 
   );
   
  
@@ -127,8 +132,8 @@ module projetofinal(
 	parameter COL_BB_NULL = 0;
 	parameter COL_BDIR = 1;
 	parameter COL_BESQ = 2;
-assign colisaoBarraBola = (((x_bola + TAMANHO_BOLA < x_barra_dir + 10 && x_bola + TAMANHO_BOLA > x_barra_dir - 10) && (y_bola + 10 > y_barra_dir && y_bola + 10 < y_barra_dir + `ALTURA_BARRA)) ? COL_BDIR :
- (x_bola > x_barra_esq - 10 && x_bola < x_barra_esq + 10) && (y_bola + 10 > y_barra_esq && y_bola + 10 < y_barra_esq + `ALTURA_BARRA) ? COL_BESQ :
+assign colisaoBarraBola = (((x_bola + TAMANHO_BOLA < x_barra_dir + `LARGURA_BARRA && x_bola + TAMANHO_BOLA > x_barra_dir ) && (y_bola + TAMANHO_BOLA > y_barra_dir && y_bola < y_barra_dir + `ALTURA_BARRA)) ? COL_BDIR :
+ (x_bola > x_barra_esq && x_bola < x_barra_esq + `LARGURA_BARRA) && (y_bola + TAMANHO_BOLA > y_barra_esq && y_bola < y_barra_esq + `ALTURA_BARRA) ? COL_BESQ :
   COL_BB_NULL);
 
 	
@@ -136,7 +141,7 @@ assign colisaoBarraBola = (((x_bola + TAMANHO_BOLA < x_barra_dir + 10 && x_bola 
   reg [32:0] periodo;
    always @(posedge VGA_CLK or posedge reset) begin
     if (reset) begin
-      x_bola <= 50;
+      x_bola <= 310;
       y_bola <= 240;
 		contadorHBola <= 0;
 		contadorVBola <= 0;
@@ -145,27 +150,13 @@ assign colisaoBarraBola = (((x_bola + TAMANHO_BOLA < x_barra_dir + 10 && x_bola 
 		sentidoHBola <= 1;
 		sentidoVBola <= 1;
 		estadoAnguloBola <= ESTADO_INCLINADO2_BOLA;
-		fimDeJogoAux <= 0;
     placar <= 0;
     placarOponente <= 0;
     periodo <= 2500000;
-	end else if (fimDeJogo) begin
-		x_bola <= 50;
-      y_bola <= 240;
-		veloHBola <= 12;
-		veloVBola <=16;
-		contadorHBola <= 0;
-		contadorVBola <= 0;
-		sentidoHBola <= 1;
-		sentidoVBola <= 1;
-		estadoAnguloBola <= ESTADO_INCLINADO2_BOLA;
-		fimDeJogoAux <= 0;
-    placar <= 0;
-    periodo <= 2500000;
-    end else begin
+	end else begin
       //CONTROLA MOVIMENTO DA BOLA VERTICALMENTE
       contadorVBola <= contadorVBola + veloVBola;
-      if(contadorVBola >= periodo && running) begin
+      if(contadorVBola >= periodo) begin
         if (sentidoVBola == BAIXO_BOLA) begin
           if (y_bola + TAMANHO_BOLA < `LIMITE_TELA_BAIXO) y_bola <= y_bola + 1;
           else sentidoVBola <= CIMA_BOLA;
@@ -178,32 +169,43 @@ assign colisaoBarraBola = (((x_bola + TAMANHO_BOLA < x_barra_dir + 10 && x_bola 
       end
       //CONTROLA MOVIMENTO DA BOLA HORIZONTALMENTE
       contadorHBola <= contadorHBola + veloHBola;
-      if(contadorHBola >= periodo && running) begin
+      if(contadorHBola >= periodo) begin
         if (sentidoHBola == DIREITA_BOLA) begin
           if (colisaoBarraBola == COL_BDIR) begin
             sentidoHBola <= ESQUERDA_BOLA;
-					//veloVBola <= veloVBola + 3;
-				    //veloHBola <= veloHBola + 4;
-            // if (colisaoBarraBola == COL_BB_ESQ) begin
-            //   sentidoHBola <= ESQUERDA_BOLA;
-            // end
-            // else if (colisaoBarraBola == COL_BB_DIR) begin
-            //   sentidoHBola <= DIREITA_BOLA;
-            // end
+				if (velo_barra_dir > 0) begin
+          veloHBola <= veloHBola + 50;
+        end
           end else if (x_bola + TAMANHO_BOLA < `LIMITE_TELA_DIR) x_bola <= x_bola + 1;
-          else begin //colisao com a direita da tela
-            //fimDeJogoAux <= 1;
-				    sentidoHBola <= ESQUERDA_BOLA;
-            placarOponente <= placarOponente + 1;
-          end
+          else if ((y_bola > `LIMITE_GOL_CIMA && y_bola + TAMANHO_BOLA < `LIMITE_GOL_BAIXO)) begin //colisao com a direita da tela
+              placarOponente <= placarOponente + 1;
+				  veloHBola <= 12;
+					veloVBola <= 16;
+					x_bola <= 310;
+					y_bola <= 240;
+				  
+          end else begin 
+              sentidoHBola <= ESQUERDA_BOLA;
+            end
+			
         end
         else if (sentidoHBola == ESQUERDA_BOLA) begin
           if (colisaoBarraBola == COL_BESQ) begin
             sentidoHBola <= DIREITA_BOLA;
+            if (velo_barra_esq > 0) begin
+              veloHBola <= veloHBola + 50;
+            end
           end else if (x_bola > `LIMITE_TELA_ESQ) x_bola <= x_bola - 1;
           else begin
-            sentidoHBola <= DIREITA_BOLA;
-            placar <= placar + 1;
+            if ((y_bola > `LIMITE_GOL_CIMA && y_bola + TAMANHO_BOLA < `LIMITE_GOL_BAIXO)) begin //colisao com a esquerda da tela
+              placar <= placar + 1;
+					veloHBola <= 12;
+					veloVBola <= 16;
+					x_bola <= 310;
+					y_bola <= 240;
+            end else begin
+					sentidoHBola <= DIREITA_BOLA;
+				end
           end
         end
         contadorHBola <= 0;
@@ -217,8 +219,7 @@ assign colisaoBarraBola = (((x_bola + TAMANHO_BOLA < x_barra_dir + 10 && x_bola 
   reg [9:0] placarOponente;
   
 
-  
-  
+
   
   
   always @(posedge VGA_CLK) begin
@@ -226,6 +227,21 @@ assign colisaoBarraBola = (((x_bola + TAMANHO_BOLA < x_barra_dir + 10 && x_bola 
 	VGA_G_aux <= 0;
 	VGA_B_aux <= 0;
 	if (printing) begin
+    if ((i >= 0 && i <= 10) || (i >= 470 && i <= 480)) begin
+      VGA_R_aux <= 255;
+      VGA_G_aux <= 255;
+      VGA_B_aux <= 255;
+    end
+    if (((j >= 0 && j <= 10)|| (j >= 630 && j <= 640)) && ((i >= 0 && i <= 180) || (i >= 300 && i <= 480))) begin
+      VGA_R_aux <= 255;
+      VGA_G_aux <= 255;
+      VGA_B_aux <= 255;
+    end
+    if(j >= 315 && j <= 325 && i >= 0 && i <= 480) begin
+      VGA_R_aux <= 255;
+      VGA_G_aux <= 255;
+      VGA_B_aux <= 255;
+    end
     if ((j >= x_barra_dir && j <= x_barra_dir + `LARGURA_BARRA) && (i >= y_barra_dir && i <= y_barra_dir + `ALTURA_BARRA)) begin
 			VGA_R_aux <= 255;
 			VGA_G_aux <= 0;

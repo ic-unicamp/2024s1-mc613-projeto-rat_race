@@ -1,0 +1,7 @@
+module barra(
+    
+
+)
+
+
+endmodule
