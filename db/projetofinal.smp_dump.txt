@@ -1,20 +1,20 @@
 
-State Machine - |projetofinal|estadoPorradao
-Name estadoPorradao.PORRADAO_NULL estadoPorradao.PORRADAO_VOLTANDO estadoPorradao.PORRADAO_INDO 
-estadoPorradao.PORRADAO_NULL 0 0 0 
-estadoPorradao.PORRADAO_INDO 1 0 1 
-estadoPorradao.PORRADAO_VOLTANDO 1 1 0 
-
-State Machine - |projetofinal|estadoBarraV
-Name estadoBarraV.BARRA_PARADA estadoBarraV.BARRA_BAIXO estadoBarraV.BARRA_CIMA 
-estadoBarraV.BARRA_PARADA 0 0 0 
-estadoBarraV.BARRA_CIMA 1 0 1 
-estadoBarraV.BARRA_BAIXO 1 1 0 
-
 State Machine - |projetofinal|running_state
 Name running_state.01 
 running_state.00 0 
 running_state.01 1 
+
+State Machine - |projetofinal|barra:barraEsq|estadoPorradao
+Name estadoPorradao.00 estadoPorradao.10 estadoPorradao.01 
+estadoPorradao.00 0 0 0 
+estadoPorradao.01 1 0 1 
+estadoPorradao.10 1 1 0 
+
+State Machine - |projetofinal|barra:barraDir|estadoPorradao
+Name estadoPorradao.00 estadoPorradao.10 estadoPorradao.01 
+estadoPorradao.00 0 0 0 
+estadoPorradao.01 1 0 1 
+estadoPorradao.10 1 1 0 
 
 State Machine - |projetofinal|vga:vga_instance|estadoV
 Name estadoV.11 estadoV.10 estadoV.01 estadoV.00 
