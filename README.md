@@ -4,7 +4,7 @@ Grupo:
 
 - 260514 - Isac Lucas Soares Braga
 - 260711 - Victor Hoshikawa Satoh
-- RA - Nome
+- 260716 - Vinícius Borges Leite 
 
 ## Descrição
 
